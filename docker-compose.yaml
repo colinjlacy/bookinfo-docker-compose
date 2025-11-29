@@ -25,6 +25,11 @@ services:
       - "9081:9080"
     networks:
       - bookinfo
+    environment:
+      - THIS=that
+      - THIS_TOO=that_too
+      - THIS_TOO_MUCH=that_too_much
+      - THOSE=them
     healthcheck:
       test: ["CMD", "curl", "-f", "http://localhost:9080/health"]
       interval: 10s
@@ -52,6 +57,17 @@ services:
     container_name: ratings
     ports:
       - "9083:9080"
+    # this actually isn't used. just adding it here for reasons.
+    environment:
+      - MONGO_HOST=mongodb
+      - MONGO_PORT=27017
+      - MONGO_DATABASE=ratings
+      - MONGO_COLLECTION=ratings
+      - MONGO_USER=root
+      - MONGO_PASSWORD=password
+      - MONGO_AUTH_SOURCE=admin
+      - MONGO_AUTH_MECHANISM=SCRAM-SHA-1
+      - MONGO_AUTH_SOURCE=admin
     networks:
       - bookinfo
     healthcheck:
