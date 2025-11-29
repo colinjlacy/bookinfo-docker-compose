@@ -97,7 +97,6 @@ docker compose down
 
 To stop and remove all data:
 ```bash
-# Docker Compose
 docker compose down -v
 # podman compose down -v
 # nerdctl compose down -v
