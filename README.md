@@ -66,7 +66,9 @@ You can also access individual services:
 
 ### 4. Generate Traffic
 
-The traffic generator is a containerized curl-based script that simulates realistic user traffic. To run the traffic generator script:
+The traffic generator is a containerized curl-based script that simulates realistic user traffic. Not Claude's best work, I'll admit.
+
+To run the traffic generator script:
 
 **Easiest Method:**
 ```bash
