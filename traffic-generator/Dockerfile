@@ -1,19 +1,20 @@
-FROM curlimages/curl:8.5.0
+FROM node:20-alpine
 
-USER root
+# Set working directory
+WORKDIR /app
 
-# Install bash and other utilities
-RUN apk add --no-cache bash coreutils
+# Copy package files
+COPY package*.json ./
+
+# Install dependencies
+RUN npm install --production
 
 # Copy the traffic generation script
-COPY generate_traffic.sh /usr/local/bin/generate_traffic.sh
+COPY generate-traffic.js ./
 
-# Make the script executable
-RUN chmod +x /usr/local/bin/generate_traffic.sh
+# Run as non-root user
+USER node
 
-# Switch back to non-root user
-USER curl_user
-
-# Set the entrypoint to the traffic generation script
-ENTRYPOINT ["/usr/local/bin/generate_traffic.sh"]
+# Set the entrypoint to run the Node.js script
+ENTRYPOINT ["node", "generate-traffic.js"]
 

@@ -66,7 +66,7 @@ You can also access individual services:
 
 ### 4. Generate Traffic
 
-The traffic generator is a containerized curl-based script that simulates realistic user traffic. Not Claude's best work, I'll admit.
+The traffic generator is a containerized Node.js application using Axios that simulates realistic user traffic.
 
 To run the traffic generator script:
 
@@ -78,16 +78,22 @@ To run the traffic generator script:
 **Manually:**
 ```bash
 docker build -t traffic-generator ./traffic-generator/
+# or: nerdctl build -t traffic-generator ./traffic-generator/
+# or: podman build -t traffic-generator ./traffic-generator/
+
+# Run the traffic generator
 docker run --rm --network docker-compose-boutique_bookinfo traffic-generator
-# or replace docker with your OCI runtime tool of choice
+# or: nerdctl run --rm --network docker-compose-boutique_bookinfo traffic-generator
+# or: podman run --rm --network docker-compose-boutique_bookinfo traffic-generator
 ```
 
 The traffic generator will execute a one-time script that:
 - Makes GET requests to all service endpoints
 - Simulates realistic user behavior with multiple page views
-- Attempts POST requests to demonstrate full API coverage
+- Makes POST requests to endpoints that support them
 - Displays colored output showing request status and responses
-- Makes approximately 21 requests total
+- Makes approximately 19 requests total
+- All requests return successful HTTP 200 status codes
 
 ## Stopping the Services
 
