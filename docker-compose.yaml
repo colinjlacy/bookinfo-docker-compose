@@ -6,6 +6,7 @@ services:
     ports:
       - "9080:9080"
     environment:
+      - ADI_PROFILE=local
       - DETAILS_HOSTNAME=details
       - DETAILS_SERVICE_PORT=9080
       - REVIEWS_HOSTNAME=reviews
@@ -26,6 +27,7 @@ services:
     networks:
       - bookinfo
     environment:
+      - ADI_PROFILE=local
       - THIS=that
       - THIS_TOO=that_too
       - THIS_TOO_MUCH=that_too_much
@@ -42,6 +44,7 @@ services:
     ports:
       - "9082:9080"
     environment:
+      - ADI_PROFILE=dev
       - RATINGS_HOSTNAME=ratings
       - RATINGS_SERVICE_PORT=9080
     networks:
@@ -59,6 +62,7 @@ services:
       - "9083:9080"
     # this actually isn't used. just adding it here for reasons.
     environment:
+      - ADI_PROFILE=local
       - MONGO_HOST=mongodb
       - MONGO_PORT=27017
       - MONGO_DATABASE=ratings
@@ -82,6 +86,10 @@ services:
     container_name: traffic-generator
     networks:
       - bookinfo
+    environment:
+      # currently won't show up in profiling because ADI_PROFILE is not set
+      # - ADI_PROFILE=ci-cd 
+      # ^^^ still wouldn't work if ADI_PROFILE_ALLOWED does not include ci-cd
     depends_on:
       - productpage
       - details
