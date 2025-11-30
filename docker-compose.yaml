@@ -7,6 +7,7 @@ services:
       - "9080:9080"
     environment:
       - ADI_PROFILE=local
+      - ADI_PROFILE_NAME=productpage
       - DETAILS_HOSTNAME=details
       - DETAILS_SERVICE_PORT=9080
       - REVIEWS_HOSTNAME=reviews
@@ -28,6 +29,7 @@ services:
       - bookinfo
     environment:
       - ADI_PROFILE=local
+      - ADI_PROFILE_NAME=details
       - THIS=that
       - THIS_TOO=that_too
       - THIS_TOO_MUCH=that_too_much
@@ -45,6 +47,7 @@ services:
       - "9082:9080"
     environment:
       - ADI_PROFILE=dev
+      - ADI_PROFILE_NAME=reviews
       - RATINGS_HOSTNAME=ratings
       - RATINGS_SERVICE_PORT=9080
     networks:
@@ -63,6 +66,7 @@ services:
     # this actually isn't used. just adding it here for reasons.
     environment:
       - ADI_PROFILE=local
+      - ADI_PROFILE_NAME=ratings
       - MONGO_HOST=mongodb
       - MONGO_PORT=27017
       - MONGO_DATABASE=ratings
@@ -90,6 +94,7 @@ services:
       # currently won't show up in profiling because ADI_PROFILE is not set
       # - ADI_PROFILE=ci-cd 
       # ^^^ still wouldn't work if ADI_PROFILE_ALLOWED does not include ci-cd
+      - ADI_PROFILE_NAME=traffic-generator
     depends_on:
       - productpage
       - details

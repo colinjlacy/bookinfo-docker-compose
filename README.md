@@ -8,7 +8,7 @@ In [another repo](https://github.com/colinjlacy/golang-http-profiler) I have an 
 
 During the first [meeting of the minds](https://docs.google.com/document/d/1oz_1K1l-VuLuy-JPOh7oWrDqPzoImpYH5racSMJ5Br0/edit) at KubeCon Atlanta, we talked about proving out this concept on something like Istio's Bookinfo or the [GCP Online Boutique](https://github.com/GoogleCloudPlatform/microservices-demo) in order to demonstrate (and understand the challenges of) scalability.
 
-In keeping with the the crawl/walk/run mantra, I'm first proving this out on a lima VM running on my Mac, listening to traffic between running containers. Future iterations will likely result some DaemonSets and will be able to profile on Kubernetes. But until this project learns to crawl we have to keep our expectations somewhat close to the ground.
+In keeping with the the crawl/walk/run mantra, I'm first proving this out on a lima VM running on my Mac, listening to traffic between running containers. Future iterations will likely result some DaemonSets and will be able to profile on Kubernetes.
 
 ## Architecture
 
